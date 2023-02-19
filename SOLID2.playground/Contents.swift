@@ -92,6 +92,6 @@ class Bike : Printable{
     
 }
 
-
+// above we created a protocol that can be inherited by the classes without needing alot of modification
 
 
