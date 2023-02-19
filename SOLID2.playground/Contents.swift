@@ -9,8 +9,8 @@ import Foundation
 class Logger{
     func printData(){
         let cars = [
-            Car(name: "Jeep", color "Gray")
-            Car(name: "Benz", color "White")
+            Car(name: "Jeep", color "Gray"),
+            Car(name: "Benz", color "White"),
             Car(name: "Lexus", color "Black")
         ]
         cars.forEach{car in
@@ -35,8 +35,63 @@ class Car{
         
     }
     
+}
+
+//after
+
+protocol Printable{
     
+    func printDetails() -> String
+}
+
+class logger{
+    
+    let cars: [Printable] = [
+    
+        Car(name: "Jeep", color "Gray"),
+        Car(name: "Benz", color "White"),
+        Car(name: "Lexus", color "Black"),
+        Bike(type: "BMX")
+        Bike(type: "Tandem")
+    
+    ]
+    
+    cars.forEach{
+        
+        print(cars.printDetails())
+    }
+        
+}
+
+
+class Car: Printable {
+    let name: String
+    let color: String
+
+    init(name: String, color: String) {
+        self.name = name
+        self.color = color
+    }
+
+    func printDetails() -> String {
+        return "I'm \(name) and my color is \(color)"
+    }
+}
+ 
+class Bike : Printable{
+    
+    let type : String
+    
+    init(type: String){
+        self.type = type
+    }
+    func printDetails() -> String{
+        
+        return "I am \(type)"
+    }
     
 }
+
+
 
 
